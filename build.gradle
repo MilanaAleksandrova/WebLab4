@@ -26,6 +26,18 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
 }
 
+tasks.register('deploy', Copy) {
+    dependsOn tasks.named('war')
+
+    from(layout.buildDirectory.file("libs/WebLab4.war"))
+    into(System.getProperty("user.home") + "/Загрузки/wildfly-38.0.0.Final/standalone/deployments")
+
+    doLast {
+        println("WAR deployed to WildFly")
+    }
+}
+
+
 test {
     useJUnitPlatform()
 }
