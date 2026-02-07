@@ -10,16 +10,15 @@ public class AreaService {
     private static final BigDecimal TWO = BigDecimal.valueOf(2);
     private static final BigDecimal ZERO = BigDecimal.ZERO;
 
-    public boolean checkArea(double doubleX, double doubleY, double doubleR){
-        BigDecimal x = BigDecimal.valueOf(doubleX);
-        BigDecimal y = BigDecimal.valueOf(doubleY);
-        BigDecimal r = BigDecimal.valueOf(Math.abs(doubleR));
+    public boolean checkArea(BigDecimal x, BigDecimal y, BigDecimal r){
 
-        boolean isHit = checkTriangle(x, y, r) ||
-                checkRectangle(x, y, r) ||
-                checkCircle(x, y, r);
+        BigDecimal absR = r.abs();
 
-        if (doubleR < 0){
+        boolean isHit = checkTriangle(x, y, absR) ||
+                checkRectangle(x, y, absR) ||
+                checkCircle(x, y, absR);
+
+        if (r.compareTo(ZERO) < 0){
             isHit = !isHit;
         }
 
@@ -28,9 +27,9 @@ public class AreaService {
 
     private boolean checkTriangle(BigDecimal x, BigDecimal y, BigDecimal r){
         //2 четверть, x <= 0, y >= 0
-        boolean isSecondQuarter = x.compareTo(BigDecimal.ZERO) <= 0 && y.compareTo(BigDecimal.ZERO) >= 0;
+        boolean isSecondQuarter = x.compareTo(ZERO) <= 0 && y.compareTo(ZERO) >= 0;
         //y <= 2x + R
-        return isSecondQuarter && y.compareTo(x.multiply(BigDecimal.valueOf(2)).add(r)) <= 0;
+        return isSecondQuarter && y.compareTo(x.multiply(TWO).add(r)) <= 0;
     }
 
     private boolean checkRectangle(BigDecimal x, BigDecimal y, BigDecimal r){
