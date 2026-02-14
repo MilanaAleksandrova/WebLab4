@@ -3,6 +3,7 @@ package ru.itmo.web.lab4.rest;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
+import ru.itmo.web.lab4.dto.ShotDto;
 import ru.itmo.web.lab4.ejb.ShotService;
 import ru.itmo.web.lab4.entity.Shot;
 
