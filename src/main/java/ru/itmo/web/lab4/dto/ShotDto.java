@@ -1,4 +1,4 @@
-package ru.itmo.web.lab4.rest;
+package ru.itmo.web.lab4.dto;
 
 public class ShotDto {
 
