@@ -23,6 +23,7 @@ public class Shot {
 
     public  Shot() {
     }
+
     public Shot(BigDecimal x, BigDecimal y, BigDecimal r, boolean hit, LocalDateTime createdAt) {
         this.x = x;
         this.y = y;
